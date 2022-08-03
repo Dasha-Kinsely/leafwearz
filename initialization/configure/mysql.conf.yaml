@@ -1,0 +1,11 @@
+#SqlDB
+mysql_dsn: yuntai:dkemployeeaccess@tcp(127.0.0.1:3306)/ostruct?charset=utf8mb4&parseTime=True&loc=Local
+mysql_disable_datetime_precision: true
+mysql_dont_support_rename_column: true
+mysql_dont_support_rename_index: true
+mysql_max_open_conn: 500
+mysql_max_idle_conn: 50
+mysql_skip_initialize_with_version: false
+
+
+

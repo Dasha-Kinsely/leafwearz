@@ -1,0 +1,14 @@
+#Basics
+port: 8090
+
+#Jwt
+jwt_secret: notcommonlyknown
+
+#Uploads
+max_img_size: 64 #in MB
+max_video_size: 2048 #in MB
+
+#Time Scheduled Tasks
+cron_tasks_required: false
+
+migration_required: false
