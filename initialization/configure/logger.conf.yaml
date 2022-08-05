@@ -1,2 +1,5 @@
 #Logging
 logging_required: false
+for_service: leafwearz
+log_directory: /leafwearz/logs/
+storage_max_day: 14

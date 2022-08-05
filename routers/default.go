@@ -39,7 +39,6 @@ type ProfilerRouterGroup struct {
 	ConsumerIntelligenceRoutes
 }
 
-func InitRouterGroup() *gin.Engine {
-	engine := gin.Default()
-	return engine
+func InitRouterGroup(server *gin.Engine) *gin.Engine {
+	return server
 }

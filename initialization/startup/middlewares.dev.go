@@ -1,5 +1,9 @@
 package startup
 
+import (
+	"github.com/gin-gonic/gin"
+)
+
 type Cors struct {
 	Mode string `json:"mode" yaml:"mode"`
 	Whitelist []CorsWhitelist `json:"whitelist" yaml:"whitelist"`
@@ -14,3 +18,10 @@ type CorsWhitelist struct {
 }
 
 var CorsGlobalSetting *Cors
+var DefaultServer *gin.Engine
+
+func AddCommonMiddleware() {
+	DefaultServer = gin.Default()
+	cors
+	return
+}

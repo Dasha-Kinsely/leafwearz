@@ -7,6 +7,7 @@ type PromoRoutes struct {}
 func (r *PromoRoutes) InitRoutes(Router *gin.RouterGroup) {
 	withMiddleware := Router.Group("promo")
 	{
+		withMiddleware.GET("/rules/:id", )
 		withMiddleware.GET("", )
 	}
 }

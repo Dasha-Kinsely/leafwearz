@@ -2,6 +2,7 @@ package startup
 
 import (
 	"leafwearz/initialization/migration"
+	"sync"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -20,7 +21,8 @@ type MySqlDatabase struct {
 var MySqlGlobalSetting *MySqlDatabase
 var MySqlClient *gorm.DB
 
-func InitMySql() {
+func InitMySql(wg *sync.WaitGroup) {
+	defer wg.Done()
 	db, err := gorm.Open(mysql.New(mysql.Config{
 		DSN:                       MySqlGlobalSetting.DSN,
 		DefaultStringSize:         256,

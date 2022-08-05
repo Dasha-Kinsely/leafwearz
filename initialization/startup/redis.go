@@ -1,6 +1,7 @@
 package startup
 
 import (
+	"sync"
 	"time"
 
 	"github.com/go-redis/redis/v9"
@@ -18,7 +19,8 @@ type Redis struct {
 var RedisGlobalSetting *Redis
 var RedisClient *redis.Client
 
-func InitRedis() {
+func InitRedis(wg *sync.WaitGroup) {
+	defer wg.Done()
 	if RedisGlobalSetting.CachingRequired {
 		RedisClient = redis.NewClient(&redis.Options{
 			Addr: RedisGlobalSetting.Addr,
