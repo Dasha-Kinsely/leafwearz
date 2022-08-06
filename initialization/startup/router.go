@@ -1,6 +1,7 @@
 package startup
 
 import (
+	"leafwearz/globals"
 	"leafwearz/routers"
 )
 
@@ -27,28 +28,30 @@ type RouterGroup struct {
 var Router *RouterGroup
 
 func InitRouterGroup() {
-	publicGroup := DefaultServer.Group("public")
+	Router = &RouterGroup{}
+	publicGroup := globals.DefaultServer.Group("public")
 	{
 		Router.AuthRoutes.InitRoutes(publicGroup)
 		Router.PubInfoRoutes.InitRoutes(publicGroup)
+		// high performance fetching
 		Router.PubPromoRoutes.InitRoutes(publicGroup)
 		Router.ProductRoutes.InitRoutes(publicGroup)
 		Router.InventoryRoutes.InitRoutes(publicGroup)
 		Router.ServiceRoutes.InitRoutes(publicGroup)
 		Router.AvailabilityRoutes.InitRoutes(publicGroup)
 	}
-	authorizedGroup := DefaultServer.Group("authorized")
+	authorizedGroup := globals.DefaultServer.Group("authorized")
 	{
-		Router.PaymentGatewayRoutes.InitRoutes(authorizedGroup)
 		Router.UserProfileRoutes.InitRoutes(authorizedGroup)
 		Router.C2MCommunicationRoutes.InitRoutes(authorizedGroup)
 		Router.ConsumerIntelligenceRoutes.InitRoutes(authorizedGroup)
+		Router.PaymentGatewayRoutes.InitRoutes(authorizedGroup)
 	}
-	adminGroup := DefaultServer.Group("admin")
+	adminGroup := globals.DefaultServer.Group("admin")
 	{
 		Router.AdminRoutes.InitRoutes(adminGroup)
 		Router.StatRoutes.InitRoutes(adminGroup)
 		Router.RecommendationSettingRoutes.InitRoutes(adminGroup)
 	}
-	
+	globals.DefaultServer.Run()
 }

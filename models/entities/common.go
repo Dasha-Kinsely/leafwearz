@@ -17,3 +17,5 @@ type Video struct {
 	Size int64 `json:"size" gorm:"column:img_size"` 
 	Address string `gorm:"column:address;notNull"`
 }
+
+type Empty struct {}

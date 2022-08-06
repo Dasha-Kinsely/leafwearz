@@ -4,6 +4,7 @@ import (
 	"errors"
 	"flag"
 	"io/ioutil"
+	"leafwearz/globals"
 	"sync"
 
 	"github.com/go-yaml/yaml"
@@ -35,17 +36,17 @@ func LoadConf(path string, configType string, wg *sync.WaitGroup) {
 	data, err := ioutil.ReadFile(path)
 	switch configType {
 	case "Server" :
-		err = yaml.Unmarshal(data, &ServerGlobalSetting)
+		err = yaml.Unmarshal(data, &globals.ServerGlobalSetting)
 	case "MySql":
-		err = yaml.Unmarshal(data, &MySqlGlobalSetting)
+		err = yaml.Unmarshal(data, &globals.MySqlGlobalSetting)
 	case "Mongo":
-		err = yaml.Unmarshal(data, &MongoGlobalSetting)
+		err = yaml.Unmarshal(data, &globals.MongoGlobalSetting)
 	case "Logger":
-		err = yaml.Unmarshal(data, &LoggerGlobalSetting)
+		err = yaml.Unmarshal(data, &globals.LoggerGlobalSetting)
 	case "Cors":
-		err = yaml.Unmarshal(data, &CorsGlobalSetting)
+		err = yaml.Unmarshal(data, &globals.CorsGlobalSetting)
 	case "Redis":
-		err = yaml.Unmarshal(data, &RedisGlobalSetting)
+		err = yaml.Unmarshal(data, &globals.RedisGlobalSetting)
 	default:
 		err = errors.New("Invalid Config Type! Failed to Bind Config-File into Objects")
 	}

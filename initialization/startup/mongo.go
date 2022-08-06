@@ -2,6 +2,7 @@ package startup
 
 import (
 	"context"
+	"leafwearz/globals"
 	"sync"
 	"time"
 
@@ -10,28 +11,16 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/readpref"
 )
 
-type MongoDatabase struct {
-	URI string `json:"mongo_uri" yaml:"mongo_uri"`
-	DBName string `json:"mongo_db_name" yaml:"mongo_db_name"`
-	AuthSource string `json:"mongo_auth_source" yaml:"mongo_auth_source"`
-	User string `json:"mongo_user" yaml:"mongo_user"`
-	Password string `json:"mongo_password" yaml:"mongo_password"`
-	PoolLimit int `json:"mongo_pool_limit" yaml:"mongo_pool_limit"`
-}
-
-var MongoGlobalSetting *MongoDatabase
-var MongoClient *mongo.Database
-
 func InitMongo(wg *sync.WaitGroup) {
 	defer wg.Done()
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	credential := options.Credential{
-		AuthSource: MongoGlobalSetting.AuthSource,
-		Username: MongoGlobalSetting.User,
-		Password: MongoGlobalSetting.Password,
+		AuthSource: globals.MongoGlobalSetting.AuthSource,
+		Username: globals.MongoGlobalSetting.User,
+		Password: globals.MongoGlobalSetting.Password,
 	}
-	client, err := mongo.Connect(ctx, options.Client().ApplyURI(MongoGlobalSetting.URI).SetAuth(credential))
+	client, err := mongo.Connect(ctx, options.Client().ApplyURI(globals.MongoGlobalSetting.URI).SetAuth(credential))
 	if err != nil {
 		panic(err)
 	}
@@ -42,6 +31,6 @@ func InitMongo(wg *sync.WaitGroup) {
         panic(err)
 	}
 	// bind client to global instance variables
-	MongoClient = client.Database(MongoGlobalSetting.DBName)
+	globals.MongoClient = client.Database(globals.MongoGlobalSetting.DBName)
 	return
 }
