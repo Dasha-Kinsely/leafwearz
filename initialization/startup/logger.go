@@ -1,6 +1,7 @@
 package startup
 
 import (
+	"leafwearz/pkg/logging"
 	"sync"
 
 	"go.uber.org/zap"
@@ -19,7 +20,7 @@ var HookLogger *zap.Logger
 
 func InitLogger(wg *sync.WaitGroup) {
 	defer wg.Done()
-	/*operationCores := logging.GetCores("operation", LoggerGlobalSetting.Directory, LoggerGlobalSetting.StorageMaxDay)
+	operationCores := logging.GetCores("operation", LoggerGlobalSetting.Directory, LoggerGlobalSetting.StorageMaxDay)
 	hookCores := logging.GetCores("hook", LoggerGlobalSetting.Directory, LoggerGlobalSetting.StorageMaxDay)
 	caller := zap.AddCaller()
 	panicOnlyMode := zap.Development()
@@ -27,6 +28,6 @@ func InitLogger(wg *sync.WaitGroup) {
 	OperationLogger = zap.New(operationCores, caller, panicOnlyMode, zapServiceName)
 	HookLogger = zap.New(hookCores, caller, panicOnlyMode, zapServiceName)
 	OperationLogger.Info("Initialization of Operation Zap Logger Finished...")
-	OperationLogger.Info("Initialization of Hook Zap Logger Finished...")*/
+	OperationLogger.Info("Initialization of Hook Zap Logger Finished...")
 	return
 }

@@ -7,7 +7,8 @@ jwt_secret: notcommonlyknown
 #Uploads
 max_img_size: 64 #in MB
 max_video_size: 2048 #in MB
-
+img_dir: /leafwearz/static/images
+video_dir: /leafwearz/static/videos
 #Time Scheduled Tasks
 cron_tasks_required: false
 

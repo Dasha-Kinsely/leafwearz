@@ -1,5 +1,5 @@
 #SqlDB
-mysql_dsn: yuntai:dkemployeeaccess@tcp(127.0.0.1:3306)/ostruct?charset=utf8mb4&parseTime=True&loc=Local
+mysql_dsn: leafadmin:dk@tcp(127.0.0.1:3306)/leafwearz?charset=utf8mb4&parseTime=True&loc=Local
 mysql_disable_datetime_precision: true
 mysql_dont_support_rename_column: true
 mysql_dont_support_rename_index: true

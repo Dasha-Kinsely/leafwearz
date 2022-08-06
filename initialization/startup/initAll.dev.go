@@ -1,6 +1,8 @@
 package startup
 
-import "sync"
+import (
+	"sync"
+)
 
 func InitAll() {
 	var wg sync.WaitGroup
@@ -8,6 +10,8 @@ func InitAll() {
 	go InitMySql(&wg)
 	go InitMongo(&wg)
 	go InitRedis(&wg)
-	go InitLogger(&wg)
+	go InitServer(&wg)
+	// go InitKafka(&wg)
 	defer wg.Wait()
+	// InitLogger()
 }

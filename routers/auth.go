@@ -4,9 +4,12 @@ import "github.com/gin-gonic/gin"
 
 type AuthRoutes struct {}
 
-func (r *AuthRoutes) InitRoutes(Router *gin.RouterGroup) {
-	withMiddleware := Router.Group("auth")
+func (r *AuthRoutes) InitRoutes(server *gin.RouterGroup) *gin.RouterGroup {
+	withMiddleware := server.Group("/auth")
 	{
-		withMiddleware.GET("", )
+		withMiddleware.GET("/signup", )
+		withMiddleware.GET("/signin", )
+		//withMiddleware.GET("/signout", )
 	}
+	return withMiddleware
 }

@@ -40,4 +40,5 @@ func InitMySql(wg *sync.WaitGroup) {
 		}
 	}
 	MySqlClient = db
+	return
 }

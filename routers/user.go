@@ -2,10 +2,10 @@ package routers
 
 import "github.com/gin-gonic/gin"
 
-type UserRoutes struct {}
+type UserProfileRoutes struct {}
 
-func (r *UserRoutes) InitRoutes(Router *gin.RouterGroup) {
-	withMiddleware := Router.Group("user")
+func (r *UserProfileRoutes) InitRoutes(Router *gin.RouterGroup) {
+	withMiddleware := Router.Group("/user")
 	{
 		withMiddleware.GET("", )
 	}

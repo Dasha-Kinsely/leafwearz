@@ -34,5 +34,5 @@ func InitRedis(wg *sync.WaitGroup) {
 			WriteTimeout: 5*time.Second,
 		})
 	}
-	
+	return
 }

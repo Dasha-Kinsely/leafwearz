@@ -43,4 +43,5 @@ func InitMongo(wg *sync.WaitGroup) {
 	}
 	// bind client to global instance variables
 	MongoClient = client.Database(MongoGlobalSetting.DBName)
+	return
 }

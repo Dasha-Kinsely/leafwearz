@@ -1,7 +1,7 @@
 #NoSqlDB
 mongo_uri: mongodb://localhost:27017
 mongo_auth_source: admin
-mongo_db_name: ostruct
-mongo_user: yuntai2
-mongo_password: dkemployeeaccess
+mongo_db_name: leafwearz
+mongo_user: leafadmin
+mongo_password: dk
 mongo_pool_limit: 500
